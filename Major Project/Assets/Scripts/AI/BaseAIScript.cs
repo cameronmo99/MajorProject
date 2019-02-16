@@ -9,10 +9,12 @@ public class BaseAIScript : MonoBehaviour
     public Rigidbody AIGameObject;
     public float Distance;
 
-    //public RaycastHit Forward;
 
     public float RaycastDistance;
     public RaycastHit HitForward;
+    public RaycastHit HitLeft;
+    public RaycastHit HitRight;
+    public RaycastHit HitBackwards;
 
 
 
@@ -41,12 +43,47 @@ public class BaseAIScript : MonoBehaviour
         // if (Physics.Raycast(transform.position, fwd, 10, out hit))
         if (Physics.Raycast(transform.position, Vector3.forward, out HitForward, RaycastDistance))
         {
-            Debug.Log("1");
+
             if (HitForward.transform.tag == "Waypoint")
-                print("There is something in front of the object!");
+            {
+
+            }
+
+        }
+
+        if (Physics.Raycast(transform.position, Vector3.left, out HitLeft, RaycastDistance))
+        {
+
+            if (HitForward.transform.tag == "Waypoint")
+            {
+
+            }
+
+        }
+
+        if (Physics.Raycast(transform.position, Vector3.right, out HitRight, RaycastDistance))
+        {
+
+            if (HitForward.transform.tag == "Waypoint")
+            {
+
+            }
+
+        }
+
+        if (Physics.Raycast(transform.position, Vector3.back, out HitBackwards, RaycastDistance))
+        {
+
+            if (HitForward.transform.tag == "Waypoint")
+            {
+
+            }
         }
 
         Debug.DrawRay(transform.position, Vector3.forward, Color.green);
+        Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+        Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+        Debug.DrawRay(transform.position, Vector3.back, Color.black);
     }
 
 
