@@ -9,7 +9,10 @@ public class BaseAIScript : MonoBehaviour
     public Rigidbody AIGameObject;
     public float Distance;
 
-    public RaycastHit Forward;
+    //public RaycastHit Forward;
+
+    public float RaycastDistance;
+    public RaycastHit HitForward;
 
 
 
@@ -22,7 +25,7 @@ public class BaseAIScript : MonoBehaviour
     void Update()
     {
         //Makes the Enemy look at the Waypoint
-        transform.LookAt(Waypoint);
+        //transform.LookAt(Waypoint);
 
         //If the Distance it more than 0 the Enemy will move towards the Player
         if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
@@ -33,18 +36,17 @@ public class BaseAIScript : MonoBehaviour
 
     public void GetNewWaypoint()
     {
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        //Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        if (Physics.Raycast(transform.position, fwd, 10) && )  //&& (RaycastHit..gameObject.tag =="Waypoint"))     // gameObject.tag == "Waypoint"))
-        //if (Physics.Raycast(transform.position, fwd, out hit, Reach) && hit.transform.tag == "Dynamic")
+        // if (Physics.Raycast(transform.position, fwd, 10, out hit))
+        if (Physics.Raycast(transform.position, Vector3.forward, out HitForward, RaycastDistance))
         {
-            //if (Forward.transform.tag == "Waypoint")
-            //{
+            Debug.Log("1");
+            if (HitForward.transform.tag == "Waypoint")
                 print("There is something in front of the object!");
-            //}
         }
 
-        Debug.DrawRay(transform.position, fwd, Color.green);
+        Debug.DrawRay(transform.position, Vector3.forward, Color.green);
     }
 
 

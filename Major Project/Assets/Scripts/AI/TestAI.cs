@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class TestAI : BaseAIScript
 {
+    public float TestAISpeed;
 
     void Start()
     {
-
+        Speed = TestAISpeed;
     }
 
     void Update()
     {
         GetNewWaypoint();
+        
     }
 }
