@@ -46,7 +46,7 @@ public class BaseAIScript : MonoBehaviour
 
             if (HitForward.transform.tag == "Waypoint")
             {
-
+                Debug.Log("ForwardHit");
             }
 
         }
@@ -56,7 +56,7 @@ public class BaseAIScript : MonoBehaviour
 
             if (HitForward.transform.tag == "Waypoint")
             {
-
+                Debug.Log("LeftHit");
             }
 
         }
@@ -66,7 +66,7 @@ public class BaseAIScript : MonoBehaviour
 
             if (HitForward.transform.tag == "Waypoint")
             {
-
+                Debug.Log("RightHit");
             }
 
         }
@@ -76,7 +76,7 @@ public class BaseAIScript : MonoBehaviour
 
             if (HitForward.transform.tag == "Waypoint")
             {
-
+                Debug.Log("BackwardsHit");
             }
         }
 
