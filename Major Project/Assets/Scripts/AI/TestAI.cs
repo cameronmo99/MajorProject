@@ -9,11 +9,12 @@ public class TestAI : BaseAIScript
     void Start()
     {
         Speed = TestAISpeed;
+        GetNewWaypoint();
     }
 
     void Update()
     {
-        GetNewWaypoint();
+
         
     }
 }

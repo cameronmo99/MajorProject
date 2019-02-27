@@ -16,6 +16,13 @@ public class BaseAIScript : MonoBehaviour
     public RaycastHit HitRight;
     public RaycastHit HitBackwards;
 
+    public GameObject WaypointForward;
+    public GameObject WaypointLeft;
+    public GameObject WaypointRight;
+    public GameObject WaypointBackwards;
+
+    public List<GameObject> WaypointsList;
+
 
 
     void Start()
@@ -46,7 +53,9 @@ public class BaseAIScript : MonoBehaviour
 
             if (HitForward.transform.tag == "Waypoint")
             {
+                WaypointsList.Add(HitForward.transform.gameObject);
                 Debug.Log("ForwardHit");
+                //WaypointForward = 
             }
 
         }
@@ -54,8 +63,9 @@ public class BaseAIScript : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.left, out HitLeft, RaycastDistance))
         {
 
-            if (HitForward.transform.tag == "Waypoint")
+            if (HitLeft.transform.tag == "Waypoint")
             {
+                WaypointsList.Add(HitLeft.transform.gameObject);
                 Debug.Log("LeftHit");
             }
 
@@ -64,8 +74,9 @@ public class BaseAIScript : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.right, out HitRight, RaycastDistance))
         {
 
-            if (HitForward.transform.tag == "Waypoint")
+            if (HitRight.transform.tag == "Waypoint")
             {
+                WaypointsList.Add(HitRight.transform.gameObject);
                 Debug.Log("RightHit");
             }
 
@@ -74,17 +85,29 @@ public class BaseAIScript : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.back, out HitBackwards, RaycastDistance))
         {
 
-            if (HitForward.transform.tag == "Waypoint")
+            if (HitBackwards.transform.tag == "Waypoint")
             {
+                WaypointsList.Add(HitBackwards.transform.gameObject);
                 Debug.Log("BackwardsHit");
             }
         }
-
+        Debug.Log(WaypointsList);
         Debug.DrawRay(transform.position, Vector3.forward, Color.green);
         Debug.DrawRay(transform.position, Vector3.left, Color.blue);
         Debug.DrawRay(transform.position, Vector3.right, Color.blue);
         Debug.DrawRay(transform.position, Vector3.back, Color.black);
     }
 
+    public void ClearWaypointsList()
+    {
+        WaypointsList.Clear();
+    }
 
+    public void ChooseWaypoint()
+    {
+
+    }
 }
+
+
+
