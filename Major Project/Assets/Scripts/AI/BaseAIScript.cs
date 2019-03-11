@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BaseAIScript : MonoBehaviour
 {
     public float Speed;
     public Transform Waypoint;
     public Rigidbody AIGameObject;
     public float Distance;
+
+    public int WaypointRandomNumber;
 
 
     public float RaycastDistance;
@@ -27,6 +30,8 @@ public class BaseAIScript : MonoBehaviour
     public Vector3 LeftVector;
     public Vector3 RightVector;
     public Vector3 BackVector;
+
+    public GameObject BlacklistedWaypoint;
 
 
 
@@ -113,6 +118,9 @@ public class BaseAIScript : MonoBehaviour
 
     public void ChooseWaypoint()
     {
+        WaypointRandomNumber = Random.Range(1, 4);
+
+        //Waypoint = WaypointsList[WaypointRandomNumber];
 
     }
 }

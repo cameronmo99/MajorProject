@@ -30,3 +30,9 @@ Version V0.0.4
 Version V0.0.4.1
 +Added and Updated Changelog
 //////////////////////\\\\\\\\\\\\\\\\\\\\\\
+
+//////////////////////\\\\\\\\\\\\\\\\\\\\\\
+Version v0.0.5
++Created ChooseWaypoint Function (WIP)
+//////////////////////\\\\\\\\\\\\\\\\\\\\\\
+
