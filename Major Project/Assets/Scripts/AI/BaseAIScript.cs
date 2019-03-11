@@ -23,11 +23,19 @@ public class BaseAIScript : MonoBehaviour
 
     public List<GameObject> WaypointsList;
 
+    public Vector3 ForwardVector;
+    public Vector3 LeftVector;
+    public Vector3 RightVector;
+    public Vector3 BackVector;
+
 
 
     void Start()
     {
-        
+        ForwardVector = new Vector3(0, 0, RaycastDistance);
+        LeftVector = new Vector3(-RaycastDistance, 0, 0);
+        RightVector = new Vector3(RaycastDistance, 0, 0);
+        BackVector = new Vector3(0, 0, -RaycastDistance);
     }
 
     // Update is called once per frame
@@ -48,7 +56,7 @@ public class BaseAIScript : MonoBehaviour
         //Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
         // if (Physics.Raycast(transform.position, fwd, 10, out hit))
-        if (Physics.Raycast(transform.position, Vector3.forward, out HitForward, RaycastDistance))
+        if (Physics.Raycast(transform.position, ForwardVector, out HitForward, RaycastDistance))
         {
 
             if (HitForward.transform.tag == "Waypoint")
@@ -60,7 +68,7 @@ public class BaseAIScript : MonoBehaviour
 
         }
 
-        if (Physics.Raycast(transform.position, Vector3.left, out HitLeft, RaycastDistance))
+        if (Physics.Raycast(transform.position, LeftVector, out HitLeft, RaycastDistance))
         {
 
             if (HitLeft.transform.tag == "Waypoint")
@@ -71,7 +79,7 @@ public class BaseAIScript : MonoBehaviour
 
         }
 
-        if (Physics.Raycast(transform.position, Vector3.right, out HitRight, RaycastDistance))
+        if (Physics.Raycast(transform.position, RightVector, out HitRight, RaycastDistance))
         {
 
             if (HitRight.transform.tag == "Waypoint")
@@ -82,7 +90,7 @@ public class BaseAIScript : MonoBehaviour
 
         }
 
-        if (Physics.Raycast(transform.position, Vector3.back, out HitBackwards, RaycastDistance))
+        if (Physics.Raycast(transform.position, BackVector, out HitBackwards, RaycastDistance))
         {
 
             if (HitBackwards.transform.tag == "Waypoint")
