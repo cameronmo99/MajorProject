@@ -14,7 +14,7 @@ public class TestAI : BaseAIScript
 
     void Update()
     {
-
+        GoToWaypoint();
         
     }
 }

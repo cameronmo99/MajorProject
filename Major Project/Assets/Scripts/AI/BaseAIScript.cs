@@ -23,6 +23,7 @@ public class BaseAIScript : MonoBehaviour
     public GameObject WaypointLeft;
     public GameObject WaypointRight;
     public GameObject WaypointBackwards;
+    public GameObject WaypointGameObject;
 
     public List<GameObject> WaypointsList;
 
@@ -120,8 +121,25 @@ public class BaseAIScript : MonoBehaviour
     {
         WaypointRandomNumber = Random.Range(1, 4);
 
-        //Waypoint = WaypointsList[WaypointRandomNumber];
+        WaypointGameObject = WaypointsList[WaypointRandomNumber];
+        Waypoint = WaypointGameObject.transform;
+        BlacklistedWaypoint = WaypointGameObject;
 
+        if (BlacklistedWaypoint == Waypoint)
+        {
+            ChooseWaypoint();
+        }
+
+    }
+
+    public void GoToWaypoint()
+    {
+        transform.LookAt(Waypoint);
+
+        if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
+        {
+            transform.position += transform.forward * Speed * Time.deltaTime;
+        }
     }
 }
 
