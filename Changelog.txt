@@ -42,3 +42,11 @@ Version V0.0.6
 +Created GoToWaypoint
 //////////////////////\\\\\\\\\\\\\\\\\\\\\\
 
+//////////////////////\\\\\\\\\\\\\\\\\\\\\\
+Version V0.0.7
++BAIS Working but needs Movement Script
++Created Outline for MainMenu
++Made UI Manager
++Added Base Camera Animation
+//////////////////////\\\\\\\\\\\\\\\\\\\\\\
+

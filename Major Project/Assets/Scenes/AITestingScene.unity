@@ -124,37 +124,13 @@ GameObject:
   - component: {fileID: 88610988}
   - component: {fileID: 88610987}
   - component: {fileID: 88610986}
-  - component: {fileID: 88610985}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Waypoint1
   m_TagString: Waypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &88610985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88610984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7370d29ba0229f3449c265286060a015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0
-  Waypoint: {fileID: 0}
-  AIGameObject: {fileID: 0}
-  Distance: 10
-  RaycastDistance: 10
-  WaypointForward: {fileID: 0}
-  WaypointLeft: {fileID: 0}
-  WaypointRight: {fileID: 0}
-  WaypointBackwards: {fileID: 0}
-  WaypointsList: []
-  TestAISpeed: 10
 --- !u!65 &88610986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -330,37 +306,13 @@ GameObject:
   - component: {fileID: 694478721}
   - component: {fileID: 694478720}
   - component: {fileID: 694478719}
-  - component: {fileID: 694478718}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Waypoint3
   m_TagString: Waypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &694478718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694478717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7370d29ba0229f3449c265286060a015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0
-  Waypoint: {fileID: 0}
-  AIGameObject: {fileID: 0}
-  Distance: 10
-  RaycastDistance: 10
-  WaypointForward: {fileID: 0}
-  WaypointLeft: {fileID: 0}
-  WaypointRight: {fileID: 0}
-  WaypointBackwards: {fileID: 0}
-  WaypointsList: []
-  TestAISpeed: 10
 --- !u!65 &694478719
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -688,37 +640,13 @@ GameObject:
   - component: {fileID: 1843648611}
   - component: {fileID: 1843648610}
   - component: {fileID: 1843648609}
-  - component: {fileID: 1843648608}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Waypoint4
   m_TagString: Waypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1843648608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843648607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7370d29ba0229f3449c265286060a015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0
-  Waypoint: {fileID: 0}
-  AIGameObject: {fileID: 0}
-  Distance: 10
-  RaycastDistance: 10
-  WaypointForward: {fileID: 0}
-  WaypointLeft: {fileID: 0}
-  WaypointRight: {fileID: 0}
-  WaypointBackwards: {fileID: 0}
-  WaypointsList: []
-  TestAISpeed: 10
 --- !u!65 &1843648609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -824,17 +752,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7370d29ba0229f3449c265286060a015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 10
   Waypoint: {fileID: 0}
   AIGameObject: {fileID: 0}
-  Distance: 0
-  RaycastDistance: 0
+  Distance: 200
+  WaypointRandomNumber: 0
+  RaycastDistance: 200
   WaypointForward: {fileID: 0}
   WaypointLeft: {fileID: 0}
   WaypointRight: {fileID: 0}
   WaypointBackwards: {fileID: 0}
+  WaypointGameObject: {fileID: 0}
   WaypointsList: []
-  TestAISpeed: 0
+  ForwardVector: {x: 0, y: 0, z: 0}
+  LeftVector: {x: 0, y: 0, z: 0}
+  RightVector: {x: 0, y: 0, z: 0}
+  BackVector: {x: 0, y: 0, z: 0}
+  BlacklistedWaypoint: {fileID: 0}
+  TestAISpeed: 10
 --- !u!54 &1858938112
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -936,9 +871,8 @@ GameObject:
   - component: {fileID: 1969506080}
   - component: {fileID: 1969506079}
   - component: {fileID: 1969506078}
-  - component: {fileID: 1969506082}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Waypoint2
   m_TagString: Waypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,26 +950,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1969506082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969506077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7370d29ba0229f3449c265286060a015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0
-  Waypoint: {fileID: 0}
-  AIGameObject: {fileID: 0}
-  Distance: 10
-  RaycastDistance: 10
-  WaypointForward: {fileID: 0}
-  WaypointLeft: {fileID: 0}
-  WaypointRight: {fileID: 0}
-  WaypointBackwards: {fileID: 0}
-  WaypointsList: []
-  TestAISpeed: 10

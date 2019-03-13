@@ -10,6 +10,7 @@ public class TestAI : BaseAIScript
     {
         Speed = TestAISpeed;
         GetNewWaypoint();
+        ChooseWaypoint();
     }
 
     void Update()
