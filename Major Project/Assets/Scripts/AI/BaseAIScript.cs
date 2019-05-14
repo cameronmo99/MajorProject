@@ -26,7 +26,7 @@ public class BaseAIScript : MonoBehaviour
     public GameObject WaypointGameObject;
 
     public List<GameObject> WaypointsList;
-
+  //  List<GameObject> WaypointsList = new List<GameObject>();
     public Vector3 ForwardVector;
     public Vector3 LeftVector;
     public Vector3 RightVector;
@@ -34,14 +34,17 @@ public class BaseAIScript : MonoBehaviour
 
     public GameObject BlacklistedWaypoint;
 
+    public int ListCount;
+
 
 
     void Start()
     {
-       // ForwardVector = new Vector3(0, 0, RaycastDistance);
-       // LeftVector = new Vector3(-RaycastDistance, 0, 0);
-       // RightVector = new Vector3(RaycastDistance, 0, 0);
-       // BackVector = new Vector3(0, 0, -RaycastDistance);
+     //   List<GameObject> WaypointsList = new List<GameObject>();
+        // ForwardVector = new Vector3(0, 0, RaycastDistance);
+        // LeftVector = new Vector3(-RaycastDistance, 0, 0);
+        // RightVector = new Vector3(RaycastDistance, 0, 0);
+        // BackVector = new Vector3(0, 0, -RaycastDistance);
     }
 
     // Update is called once per frame
@@ -62,7 +65,8 @@ public class BaseAIScript : MonoBehaviour
         //Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
         // if (Physics.Raycast(transform.position, fwd, 10, out hit))
-  //      if (Physics.Raycast(transform.position, ForwardVector, out HitForward, RaycastDistance))
+        //      if (Physics.Raycast(transform.position, ForwardVector, out HitForward, RaycastDistance))
+
         if (Physics.Raycast(transform.position, Vector3.forward, out HitForward, RaycastDistance))
             {
 
@@ -106,11 +110,6 @@ public class BaseAIScript : MonoBehaviour
                 Debug.Log("BackwardsHit");
             }
         }
-        Debug.Log(WaypointsList);
-        Debug.DrawRay(transform.position, Vector3.forward, Color.green);
-        Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-        Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-        Debug.DrawRay(transform.position, Vector3.back, Color.black);
     }
 
     public void ClearWaypointsList()
@@ -120,27 +119,50 @@ public class BaseAIScript : MonoBehaviour
 
     public void ChooseWaypoint()
     {
-        WaypointRandomNumber = Random.Range(0, 3);
+        ClearWaypointsList();
+        GetNewWaypoint();
+        ListCount = WaypointsList.Count;
+
+        Debug.Log(ListCount);
+        WaypointRandomNumber = Random.Range(0, ListCount);
 
         WaypointGameObject = WaypointsList[WaypointRandomNumber];
+
+      //  if (WaypointGameObject == null)
+      //  {
+      //      Debug.Log("test");
+      //      ChooseWaypoint();
+      //  }
+
         Waypoint = WaypointGameObject.transform;
         BlacklistedWaypoint = WaypointGameObject;
 
-        if (BlacklistedWaypoint == Waypoint)
-        {
-            ChooseWaypoint();
-        }
+
+       // if (BlacklistedWaypoint == WaypointGameObject)
+       // {
+       //     if (ListCount > 1)
+       //     {
+       //         ChooseWaypoint();
+       //     }
+       //
+        //}
+
 
     }
 
     public void GoToWaypoint()
     {
-     //   transform.LookAt(Waypoint);
+        transform.LookAt(Waypoint);
 
-       /* if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
+        if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
         {
             transform.position += transform.forward * Speed * Time.deltaTime;
-        }*/
+        }
+        if (Vector3.Distance(transform.position, Waypoint.position) <= Distance)
+        {
+            //ClearWaypointsList();
+            ChooseWaypoint();
+        }
     }
 }
 

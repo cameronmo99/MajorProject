@@ -1,24 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerControllerSinglePlayer : MonoBehaviour
 {
-    public float PlayerRotationSpeed;
-    public float Speed;
-    public GameObject Player;
-    public Rigidbody PlayerRigidBody;
+    CharacterController Player;
+    
 
+    public float speed = 6.0f;
+    public float jumpSpeed = 8.0f;
+    public float gravity = 20.0f;
+
+    private Vector3 moveDirection = Vector3.zero;
+
+    void Start()
+    {
+        Player = GetComponent<CharacterController>();
+    }
 
     void Update()
     {
-        //Player Rotation
-        Player.transform.Rotate(0, PlayerRotationSpeed * Input.GetAxis("Horizontal"), 0);
+
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection *= speed;
+
     }
 
-    void FixedUpdate()
-    {
-        //Player Movement
-        PlayerRigidBody.AddForce((transform.forward * Speed) * Input.GetAxis("Vertical"));
-    }
+
 }
