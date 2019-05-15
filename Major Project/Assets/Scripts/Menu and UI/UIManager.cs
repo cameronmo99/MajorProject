@@ -21,6 +21,14 @@ public class UIManager : MonoBehaviour
     public Text ColumnSliderAmount;
     public Slider RowSlider;
     public Slider ColumnSlider;
+    public GameObject Goal;
+    public Collider GoalBox;
+    public GameObject Player1;
+    public bool SPWON;
+    public bool SPLOST;
+    public Slider SinglePlayerCanvasRowSlider;
+    public Slider SinglePlayerCanvasColumnsSlider;
+    public int Life = 0;
 
     private void Awake()
     {
@@ -30,6 +38,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         CurrentScene = SceneManager.GetActiveScene();
+        Life = 0;
     }
 
     public void EnableCanves()
@@ -40,32 +49,53 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         CurrentScene = SceneManager.GetActiveScene();
 
         if (CurrentScene.name == "MainMenu")
         {
+           // MainMenuCanves = GameObject.Find("MainMenuCanvas").GetComponent<Canvas>();
+           // SinglePlayerCanvas = GameObject.Find("SinglePlayerCanvas").GetComponent<Canvas>();
+
+
+
+          //SinglePlayerCanvasRowSlider = GameObject.Find("RowSlider").GetComponent<Slider>();
+          //  RowsWanted = RowsWanted.value;
+          //SinglePlayerCanvasColumnsSlider = GameObject.Find("ColumnSlider").GetComponent<Slider>();
+          //  ColumnsWanted = SinglePlayerCanvasRowSlider.value;
+            RowsWanted = RowSlider.value;
+            ColumnsWanted = ColumnSlider.value;
+          //RowSliderAmount = GameObject.Find("RowAmount").GetComponent<Text>();
+          //ColumnSliderAmount = GameObject.Find("ColumnAmount").GetComponent<Text>();
+            RowSliderAmount.text = RowsWanted.ToString();
+            ColumnSliderAmount.text = ColumnsWanted.ToString();
             if (DisableMainCanvas == true)
             {
                 MainMenuCanves.gameObject.SetActive(true);
             }
         }
 
-        RowsWanted = RowSlider.value;
-        ColumnsWanted = ColumnSlider.value;
-        RowSliderAmount.text = RowsWanted.ToString();
-        ColumnSliderAmount.text = ColumnsWanted.ToString();
+        if(CurrentScene.name == "SinglePlayer")
+        {
+            if (SPWON == true)
+            {
+                SceneManager.LoadScene("SPWON");
+                SPWON = false;
+                Destroy(this);
+            }
+            if (SPLOST == true)
+            {
+                SceneManager.LoadScene("SPLOST");
+                SPLOST = false;
+            }
+            if (CurrentScene.name == "SPLOST")
+            {
+                Destroy(this);
+                //SceneManager.LoadScene("MainMenu");
+            }
+        }
 
-    }
-
-
-
-
-
-
-
-
-
-
+        }
 
 
 
@@ -87,8 +117,21 @@ public class UIManager : MonoBehaviour
 
     public void BackButton()
     {
-        DisableMainCanvas = false;
-        MainMenuCanves.gameObject.SetActive(true);
+        if (CurrentScene.name == "MainMenu")
+        {
+            DisableMainCanvas = false;
+
+            SinglePlayerCanvas.gameObject.SetActive(false);
+            VSCanvas.gameObject.SetActive(false);
+            OptionsCanvas.gameObject.SetActive(false);
+            MainMenuCanves.gameObject.SetActive(true);
+        }
+        if (CurrentScene.name == "SinglePlayer")
+        {
+            DisableMainCanvas = false;
+
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void ExitButton()

@@ -25,7 +25,7 @@ public class NewPlayerScriptSinglePlayer : MonoBehaviour
 
     void Update()
     {
-        if (characterController.isGrounded)
+      //  if (characterController.isGrounded)
         {
             // We are grounded, so recalculate
             // move direction directly from axes

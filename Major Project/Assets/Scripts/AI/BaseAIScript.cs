@@ -37,10 +37,24 @@ public class BaseAIScript : MonoBehaviour
     public int ListCount;
 
 
+    public bool player1Near = false;
+    public Transform Player1Transform;
+    public GameObject Player1Gameobject;
+
+    public bool player2Near = false;
+    public Transform Player2Transform;
+    public GameObject Player2Gameobject;
+
+    public float PlayerDistance;
+
+
 
     void Start()
     {
-     //   List<GameObject> WaypointsList = new List<GameObject>();
+
+
+
+        //   List<GameObject> WaypointsList = new List<GameObject>();
         // ForwardVector = new Vector3(0, 0, RaycastDistance);
         // LeftVector = new Vector3(-RaycastDistance, 0, 0);
         // RightVector = new Vector3(RaycastDistance, 0, 0);
@@ -50,14 +64,15 @@ public class BaseAIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //Makes the Enemy look at the Waypoint
         //transform.LookAt(Waypoint);
 
         //If the Distance it more than 0 the Enemy will move towards the Player
-       /* if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
-        {
-            transform.position += transform.forward * Speed * Time.deltaTime;
-        } */
+        /* if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
+         {
+             transform.position += transform.forward * Speed * Time.deltaTime;
+         } */
     }
 
     public void GetNewWaypoint()
@@ -66,6 +81,23 @@ public class BaseAIScript : MonoBehaviour
 
         // if (Physics.Raycast(transform.position, fwd, 10, out hit))
         //      if (Physics.Raycast(transform.position, ForwardVector, out HitForward, RaycastDistance))
+        if (Vector3.Distance(transform.position, Player1Transform.position) <= PlayerDistance)
+        {
+            player1Near = true;
+        }
+        else
+        {
+            player1Near = false;
+        }
+
+        if (Vector3.Distance(transform.position, Player2Transform.position) <= PlayerDistance)
+        {
+            player2Near = true;
+        }
+        else
+        {
+            player2Near = false;
+        }
 
         if (Physics.Raycast(transform.position, Vector3.forward, out HitForward, RaycastDistance))
             {
@@ -73,7 +105,6 @@ public class BaseAIScript : MonoBehaviour
             if (HitForward.transform.tag == "Waypoint")
             {
                 WaypointsList.Add(HitForward.transform.gameObject);
-                Debug.Log("ForwardHit");
 
             }
 
@@ -85,7 +116,6 @@ public class BaseAIScript : MonoBehaviour
             if (HitLeft.transform.tag == "Waypoint")
             {
                 WaypointsList.Add(HitLeft.transform.gameObject);
-                Debug.Log("LeftHit");
             }
 
         }
@@ -96,7 +126,6 @@ public class BaseAIScript : MonoBehaviour
             if (HitRight.transform.tag == "Waypoint")
             {
                 WaypointsList.Add(HitRight.transform.gameObject);
-                Debug.Log("RightHit");
             }
 
         }
@@ -107,7 +136,6 @@ public class BaseAIScript : MonoBehaviour
             if (HitBackwards.transform.tag == "Waypoint")
             {
                 WaypointsList.Add(HitBackwards.transform.gameObject);
-                Debug.Log("BackwardsHit");
             }
         }
     }
@@ -123,7 +151,6 @@ public class BaseAIScript : MonoBehaviour
         GetNewWaypoint();
         ListCount = WaypointsList.Count;
 
-        Debug.Log(ListCount);
         WaypointRandomNumber = Random.Range(0, ListCount);
 
         WaypointGameObject = WaypointsList[WaypointRandomNumber];
@@ -150,10 +177,31 @@ public class BaseAIScript : MonoBehaviour
 
     }
 
+    public void GoToTarget()
+    {
+        if(player1Near == true)
+        {
+            transform.LookAt(Player1Transform);
+            transform.position += transform.forward * (Speed * 2 ) * Time.deltaTime;
+        }
+        else
+        {
+            GoToWaypoint();
+        }
+
+        if (player2Near == true)
+        {
+            transform.LookAt(Player2Transform);
+            transform.position += transform.forward * (Speed * 2) * Time.deltaTime;
+        }
+        else
+        {
+            GoToWaypoint();
+        }
+    }
     public void GoToWaypoint()
     {
         transform.LookAt(Waypoint);
-
         if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
         {
             transform.position += transform.forward * Speed * Time.deltaTime;
@@ -163,7 +211,16 @@ public class BaseAIScript : MonoBehaviour
             //ClearWaypointsList();
             ChooseWaypoint();
         }
+
     }
+    //public void GetPlayers()
+    //{
+    //    Player1Gameobject = GameObject.FindGameObjectWithTag("Player1");
+    //    Player1Transform = Player1Gameobject.transform;
+    //    Player2Gameobject = GameObject.FindGameObjectWithTag("Player2");
+    //    Player1Transform = Player1Gameobject.transform;
+    //}
+
 }
 
 

@@ -9,13 +9,14 @@ public class TestAI : BaseAIScript
     void Start()
     {
         Speed = TestAISpeed;
+        //GetPlayers();
         GetNewWaypoint();
         ChooseWaypoint();
     }
 
     void Update()
     {
-        GoToWaypoint();
+        GoToTarget();
         
     }
 }
