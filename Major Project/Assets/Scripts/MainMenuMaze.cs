@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyGameManager : MonoBehaviour
+public class MainMenuMaze : MazeGen
 {
     // Start is called before the first frame update
-    public GameObject GameManager;
-
     void Start()
     {
-        //Destroys the GameManager
-        GameManager = GameObject.Find("GameManager");
-        Destroy(GameManager);
+        //Spawns Maze For Main Menu
+        WantedRows = 20;
+        WantedColumns = 20;
+        GenerateMaze();
+        SpawnWalls();
     }
 
     // Update is called once per frame

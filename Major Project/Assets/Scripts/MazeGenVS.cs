@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeGen : MonoBehaviour
-
+public class MazeGenVS : MonoBehaviour
 {
     public GameObject GameManager;
     public GameObject Prefab1;
@@ -31,14 +30,11 @@ public class MazeGen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Finds the GameManager
         GameManager = GameObject.Find("GameManager");
 
-        //Sets How Many Rows and Columns are wanted from GameManager
-        WantedRows = GameObject.Find("GameManager").GetComponent<UIManager>().RowsWanted;
-        WantedColumns = GameObject.Find("GameManager").GetComponent<UIManager>().ColumnsWanted;
+        WantedRows = GameObject.Find("GameManager").GetComponent<UIManager>().RowsWantedVS;
+        WantedColumns = GameObject.Find("GameManager").GetComponent<UIManager>().ColumnsWantedVS;
 
-        //Gets the Amount of Maze Tiles in the List and Sets Starts Positions
         Row = Row + 1;
         ListCount = MazeTiles.Count;
         Position = new Vector3(0, 0, 0);
@@ -55,7 +51,6 @@ public class MazeGen : MonoBehaviour
 
     }
 
-    //Gets a Random Tile
     public void GetTile()
     {
         MazeTileRandomNumber = Random.Range(0, ListCount);
@@ -69,8 +64,7 @@ public class MazeGen : MonoBehaviour
 
         //if (Column == WantedColumns)
         {
-            //Instantiates the Rows
-            while(Row < WantedRows)
+            while (Row < WantedRows)
             {
                 Row++;
                 Position = Position + new Vector3(+30, 0, -RowAlignment);
@@ -88,7 +82,6 @@ public class MazeGen : MonoBehaviour
 
     public void MazeColumn()
     {
-        //Instantiates the Columns
         while (Column < WantedColumns)
         {
             if (SpawnSpawned == false)
@@ -107,7 +100,6 @@ public class MazeGen : MonoBehaviour
     }
     public void SpawnWalls()
     {
-        //Spawns the Walls
         Row = 1;
         Column = 1;
         SpawnWallsTop();
@@ -132,16 +124,16 @@ public class MazeGen : MonoBehaviour
             WallPosition = WallPosition + new Vector3(0, 0, +30);
             Instantiate(WallHorizontal, WallPosition, Quaternion.identity);
             Column++;
-         }
+        }
     }
 
     public void SpawnWallsLeft()
     {
-        WallPosition = new Vector3 (0, 2.5f, -15);
-        Instantiate(WallVertical, WallPosition, Quaternion.Euler(0,90f,0));
+        WallPosition = new Vector3(0, 2.5f, -15);
+        Instantiate(WallVertical, WallPosition, Quaternion.Euler(0, 90f, 0));
         while (Row < WantedRows)
         {
-            WallPosition = WallPosition + new Vector3(+30 , 0, 0);
+            WallPosition = WallPosition + new Vector3(+30, 0, 0);
             Instantiate(WallVertical, WallPosition, Quaternion.Euler(0, 90f, 0));
             Row++;
         }

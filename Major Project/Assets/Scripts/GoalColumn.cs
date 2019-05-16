@@ -20,7 +20,7 @@ public class GoalColumn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Checks Distance Between the Player and Goal
         if (Vector3.Distance(transform.position , PlayerTransform.position) < 20)
         {
             UIManager.SPWON = true;

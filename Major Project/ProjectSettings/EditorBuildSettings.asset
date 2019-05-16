@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SPWON.unity
     guid: 389d04dcd7e4dbe4b8adeeb8c840f155
+  - enabled: 1
+    path: Assets/Scenes/VS.unity
+    guid: dfe7cb632378c5d4cb3a37d4fba6f492
   m_configObjects: {}

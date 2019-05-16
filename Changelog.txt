@@ -50,3 +50,15 @@ Version V0.0.7
 +Added Base Camera Animation
 //////////////////////\\\\\\\\\\\\\\\\\\\\\\
 
+//////////////////////\\\\\\\\\\\\\\\\\\\\\\
+Version V1.02.0
++Initaial Version
++Single Player Finished
++VS Finished
++Mobile Build Q2 2019
+//////////////////////\\\\\\\\\\\\\\\\\\\\\\
+
+Known Bugs:
+Single Player PLayer Controller Flips
+The Win or Lose Scene is Bugged
+

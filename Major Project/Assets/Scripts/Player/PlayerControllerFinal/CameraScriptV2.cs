@@ -7,34 +7,31 @@ public class CameraScriptV2 : MonoBehaviour
 
     public float sensitivity = 5.0f;
     public float smoothing = 2.0f;
-    // the chacter is the capsule
-    public GameObject character;
-    // get the incremental value of mouse moving
+    public GameObject Player;
     private Vector2 mouseLook;
-    // smooth the mouse moving
-    private Vector2 smoothV;
+    private Vector2 Smoothing;
 
     // Use this for initialization
     void Start()
     {
-        character = this.transform.parent.gameObject;
+        Player = this.transform.parent.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // md is mosue delta
-        var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
-        // the interpolated float result between the two float values
-        smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
-        smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
-        // incrementally add to the camera look
-        mouseLook += smoothV;
+        //Gets the Vector2 Data from the Mouse
+        var Mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Mouse = Vector2.Scale(Mouse, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+        //Smooths the Movement
+        Smoothing.x = Mathf.Lerp(Smoothing.x, Mouse.x, 1f / smoothing);
+        Smoothing.y = Mathf.Lerp(Smoothing.y, Mouse.y, 1f / smoothing);
+        //Is added to the Camera
+        mouseLook += Smoothing;
 
-        // vector3.right means the x-axis
+        //Moves the Camera
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-        character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
+        Player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, Player.transform.up);
 
         if(this.transform.localRotation.x != 0)
         {

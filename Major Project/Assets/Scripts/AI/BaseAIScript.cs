@@ -81,6 +81,8 @@ public class BaseAIScript : MonoBehaviour
 
         // if (Physics.Raycast(transform.position, fwd, 10, out hit))
         //      if (Physics.Raycast(transform.position, ForwardVector, out HitForward, RaycastDistance))
+
+        //Checks is a Player is Near
         if (Vector3.Distance(transform.position, Player1Transform.position) <= PlayerDistance)
         {
             player1Near = true;
@@ -99,6 +101,7 @@ public class BaseAIScript : MonoBehaviour
             player2Near = false;
         }
 
+        //Gets Waypoints and adds them to a List
         if (Physics.Raycast(transform.position, Vector3.forward, out HitForward, RaycastDistance))
             {
 
@@ -142,6 +145,7 @@ public class BaseAIScript : MonoBehaviour
 
     public void ClearWaypointsList()
     {
+        //Clears the Waypoint List
         WaypointsList.Clear();
     }
 
@@ -151,6 +155,7 @@ public class BaseAIScript : MonoBehaviour
         GetNewWaypoint();
         ListCount = WaypointsList.Count;
 
+        //Gets a Random Waypoint from the list
         WaypointRandomNumber = Random.Range(0, ListCount);
 
         WaypointGameObject = WaypointsList[WaypointRandomNumber];
@@ -161,6 +166,7 @@ public class BaseAIScript : MonoBehaviour
       //      ChooseWaypoint();
       //  }
 
+        //Gets the Waypoint Transform 
         Waypoint = WaypointGameObject.transform;
         BlacklistedWaypoint = WaypointGameObject;
 
@@ -179,6 +185,7 @@ public class BaseAIScript : MonoBehaviour
 
     public void GoToTarget()
     {
+        //If the Player is Near will Attack the Player else will go to Waypoint
         if(player1Near == true)
         {
             transform.LookAt(Player1Transform);
@@ -201,6 +208,7 @@ public class BaseAIScript : MonoBehaviour
     }
     public void GoToWaypoint()
     {
+        //Looks and Goes to Waypoint
         transform.LookAt(Waypoint);
         if (Vector3.Distance(transform.position, Waypoint.position) >= Distance)
         {

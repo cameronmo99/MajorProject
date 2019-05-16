@@ -19,7 +19,7 @@ public class PlayerScriptV2 : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        // turn off the cursor
+        //Locks the Cursor and gets the GameManager
         Cursor.lockState = CursorLockMode.Locked;
         PauseMenu = GameObject.Find("PauseMenu");
         Goal = GameObject.FindGameObjectWithTag("Goal");
@@ -30,8 +30,7 @@ public class PlayerScriptV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Input.GetAxis() is used to get the user's input
-        // You can furthor set it on Unity. (Edit, Project Settings, Input)
+        //Gets Info for Controller and Finds the GameManger
         Vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         Horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         transform.Translate(Horizontal, 0, Vertical);
@@ -40,12 +39,14 @@ public class PlayerScriptV2 : MonoBehaviour
         UIManager = GameManager.GetComponent<UIManager>();
         //Vertical = Mathf.Clamp(Vertical, MinimumX, MaximumX);
 
+
+        //Turns the Pause Menu off
         if (EscapeMenu == false)
         {
             PauseMenu.gameObject.SetActive(false);
         }
 
-
+        //If the Pause Menu is off the TimeScale is normal and locks the Cursor
         if (EscapeMenu == false)
         {
             PauseMenu.gameObject.SetActive(false);
@@ -53,6 +54,7 @@ public class PlayerScriptV2 : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        //If the Pause Menu is on the TimeScale is 0 and unlocks the Cursor
         if (EscapeMenu == true)
         {
             PauseMenu.gameObject.SetActive(true);
@@ -65,6 +67,7 @@ public class PlayerScriptV2 : MonoBehaviour
             EscapeMenu = !EscapeMenu;
         }
     }
+    //Detects The Goal, AI and Loads relivent Scene
     void OnCollisionStay(Collision col)
     {
         if (gameObject.tag== "Goal")

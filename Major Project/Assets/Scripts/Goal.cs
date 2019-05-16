@@ -10,20 +10,21 @@ public class Goal : MonoBehaviour
 
     void Start()
     {
+        //Gets the GameManager
         GoalGameObject = GameObject.FindGameObjectWithTag("Goal");
         GameManager = GameObject.FindGameObjectWithTag("GameManager");
         UIManager = GameManager.GetComponent<UIManager>();
     }
+
+    //Checks Objects and Sets GameManager Bools
     void OnCollisionStay(Collision col)
     {
         if (gameObject.name == "Player")
         {
-            Debug.Log("Why");
             UIManager.SPWON = true;
         }
         if (gameObject.tag == "Player1")
         {
-            Debug.Log("please");
         }
         if (gameObject.name == "Player2")
         {

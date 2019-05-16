@@ -37,7 +37,7 @@ public class SplashScreen : MonoBehaviour {
         }
 
     }
-
+    //Runs the Fade Prossess
     IEnumerator Fade()
     {
         yield return new WaitForSeconds(startdelay);

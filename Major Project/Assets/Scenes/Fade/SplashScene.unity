@@ -112,6 +112,86 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &382606952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382606953}
+  - component: {fileID: 382606955}
+  - component: {fileID: 382606954}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &382606953
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382606952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224769614887684974}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -46.2, y: 76}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &382606954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382606952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "  A [Maze] Game\nBy Cameron Morris\n        DUB11544\n\n                               \n
+    \                                V1.02"
+--- !u!222 &382606955
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382606952}
+  m_CullTransparentMesh: 0
 --- !u!1 &500912400
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,10 +328,16 @@ MonoBehaviour:
   DisableMainCanvas: 0
   RowsWanted: 0
   ColumnsWanted: 0
+  RowsWantedVS: 0
+  ColumnsWantedVS: 0
   RowSliderAmount: {fileID: 0}
   ColumnSliderAmount: {fileID: 0}
+  RowSliderAmountVS: {fileID: 0}
+  ColumnSliderAmountVS: {fileID: 0}
   RowSlider: {fileID: 0}
   ColumnSlider: {fileID: 0}
+  RowSliderVS: {fileID: 0}
+  ColumnSliderVS: {fileID: 0}
   Goal: {fileID: 0}
   GoalBox: {fileID: 0}
   Player1: {fileID: 0}
@@ -259,6 +345,9 @@ MonoBehaviour:
   SPLOST: 0
   SinglePlayerCanvasRowSlider: {fileID: 0}
   SinglePlayerCanvasColumnsSlider: {fileID: 0}
+  VSCanvasRowSlider: {fileID: 0}
+  VSCanvasColumnsSlider: {fileID: 0}
+  Life: 0
 --- !u!4 &1477740570
 Transform:
   m_ObjectHideFlags: 0
@@ -459,12 +548,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Logo: {fileID: 114390450964038176}
   Background: {fileID: 114531612078004020}
-  fadetimeLogo: 0
-  fadetimeBackground: 0
-  fadedelay: 0
-  fadedelay2: 0
+  fadetimeLogo: 5
+  fadetimeBackground: 5
+  fadedelay: 5
+  fadedelay2: 5
   ChangeScene: 0
-  startdelay: 0
+  startdelay: 2
 --- !u!114 &114390450964038176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,6 +729,7 @@ RectTransform:
   - {fileID: 224857012369131220}
   - {fileID: 224140530551246292}
   - {fileID: 224827863933742762}
+  - {fileID: 382606953}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

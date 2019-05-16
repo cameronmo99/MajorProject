@@ -1333,6 +1333,8 @@ MonoBehaviour:
   Player2Gameobject: {fileID: 0}
   PlayerDistance: 5
   EasySpeed: 3
+  GameManager: {fileID: 0}
+  UIManager: {fileID: 0}
 --- !u!1 &6102235946540873309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,7 +1848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7094020760540581813}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 9.86, y: 2.6200004, z: -6.1299973}
+  m_LocalPosition: {x: 2.55, y: 2.6200004, z: -6.1299973}
   m_LocalScale: {x: 1, y: 5, z: 11.079264}
   m_Children: []
   m_Father: {fileID: 898381285684325451}
