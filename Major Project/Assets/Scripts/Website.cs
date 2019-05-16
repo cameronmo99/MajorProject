@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Website : MonoBehaviour
 {
-    void OpenWebsite()
+    public void OpenWebsite()
     {
         Application.OpenURL("http://cameronmo99.wordpress.com/");
     }
